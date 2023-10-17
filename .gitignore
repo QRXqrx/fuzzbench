@@ -44,3 +44,10 @@ docker/generated.mk
 
 # Vim backup files.
 .*.swp
+
+# Jetbrain
+.idea
+*.iml
+
+# Mac
+.DS_Store
