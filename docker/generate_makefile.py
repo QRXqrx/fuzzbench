@@ -122,7 +122,12 @@ def get_rules_for_image(name, image):
     section += '\t--build-arg BUILDKIT_INLINE_CACHE=1 \\\n'
     section += ('\t--cache-from ' + os.path.join(BASE_TAG, image['tag']) +
                 ' \\\n')
-
+    # @Adian: Enable proxy inside docker containers.
+    section += '\t--network host \\\n'
+    section += '\t--build-arg HTTP_PROXY=http://127.0.0.1:7890 \\\n'
+    section += '\t--build-arg HTTPS_PROXY=http://127.0.0.1:7890 \\\n'
+    section += '\t--build-arg NO_PROXY=localhost,127.0.0.1,.example.com \\\n'
+    # @Adian #
     if 'build_arg' in image:
         for arg in image['build_arg']:
             section += '\t--build-arg ' + arg + ' \\\n'
