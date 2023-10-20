@@ -45,6 +45,8 @@ docker/generated.mk
 # Vim backup files.
 .*.swp
 
+## @Adian
+
 # Jetbrain
 .idea
 *.iml
