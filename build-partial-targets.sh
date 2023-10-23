@@ -18,5 +18,5 @@ for TARGET in "${TARGETS[@]}"
 do
   echo "make -j$(nproc) build-$FUZZER-$TARGET"
   make -j"$(nproc)" "build-$FUZZER-$TARGET"
-  wait
+#  wait
 done
