@@ -45,9 +45,9 @@ RUN cd /tmp/ && \
     ln -s /usr/local/bin/python3 /usr/local/bin/python && \
     ln -s /usr/local/bin/pip3 /usr/local/bin/pip
 
-# Install common python dependencies.
+# Install common python dependencies. @Adian: using Chinese source
 COPY ./requirements.txt /tmp
-RUN pip install -r /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple/
 
 # Install dependencies required by google-cloud-cli.
 RUN apt-get update && \
