@@ -52,14 +52,14 @@ VENV_ACTIVATE := .venv/bin/activate
 # 	python3.10 -m venv .venv || python3 -m venv .venv
 # 	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && python3 -m pip install -r requirements.txt
 
-# @Adian: use Chinese (e.g., utsc, tsinghua, aliyun) source when pip install
+# @Adian: use Chinese (e.g., nju, utsc, tsinghua, aliyun) source when pip install
 # @Adian: tsinghua source does not work
 # ${VENV_ACTIVATE}: requirements.txt
 # 	python3.10 -m venv .venv || python3 -m venv .venv
 # 	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && python3 -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 ${VENV_ACTIVATE}: requirements.txt
 	python3.10 -m venv .venv || python3 -m venv .venv
-	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && python3 -m pip install -r requirements.txt -i http://mirrors.aliyun.com/pypi/simple
+	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && python3 -m pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple
 
 
 
