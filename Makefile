@@ -47,9 +47,16 @@ include docker/generated.mk
 SHELL := /bin/bash
 VENV_ACTIVATE := .venv/bin/activate
 
+# Fuzzbench-Orig
+# ${VENV_ACTIVATE}: requirements.txt
+# 	python3.10 -m venv .venv || python3 -m venv .venv
+# 	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && python3 -m pip install -r requirements.txt
+
+# @Adian: use Chinese (e.g., utsc and tsinghua) source when pip install
 ${VENV_ACTIVATE}: requirements.txt
 	python3.10 -m venv .venv || python3 -m venv .venv
-	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && python3 -m pip install -r requirements.txt
+	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && python3 -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
 
 install-dependencies: ${VENV_ACTIVATE}
 
