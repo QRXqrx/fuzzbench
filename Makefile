@@ -59,8 +59,9 @@ VENV_ACTIVATE := .venv/bin/activate
 
 ${VENV_ACTIVATE}: requirements.txt
 	python3.10 -m venv .venv || python3 -m venv .venv
-	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools \
-	&& python3 -m pip install -i https://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.cloud.aliyuncs.com --default-timeout=1000 --no-cache-dir -r requirements.txt
+	source ${VENV_ACTIVATE} && \
+	python3 -m pip install -i https://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.cloud.aliyuncs.com --upgrade pip setuptools && \
+	python3 -m pip install -i https://mirrors.aliyun.com/pypi/simple --trusted-host mirrors.cloud.aliyuncs.com --default-timeout=1000 --no-cache-dir -r requirements.txt
 
 # @Adian: use Chinese (e.g., nju, utsc, tsinghua, aliyun) source when pip install
 # SRC_INDEX := https://mirrors.aliyun.com/pypi/simple
