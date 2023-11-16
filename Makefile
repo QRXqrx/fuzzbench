@@ -53,9 +53,9 @@ VENV_ACTIVATE := .venv/bin/activate
 # 	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && python3 -m pip install -r requirements.txt
 
 # @Adian: use Chinese (e.g., nju, utsc, tsinghua, aliyun) source when pip install
-SRC_INDEX := https://pypi.tuna.tsinghua.edu.cn/simple
+# SRC_INDEX := https://pypi.tuna.tsinghua.edu.cn/simple
 # SRC_INDEX :=  https://mirrors.aliyun.com/pypi/simple
-# SRC_INDEX := https://mirrors.ustc.edu.cn/pypi/web/simple
+SRC_INDEX := https://mirrors.ustc.edu.cn/pypi/web/simple
 # SRC_INDEX := https://mirrors.nju.edu.cn/pypi/web/simple
 ${VENV_ACTIVATE}: requirements.txt
 	python3.10 -m venv .venv || python3 -m venv .venv
