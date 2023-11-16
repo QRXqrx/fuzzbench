@@ -55,7 +55,7 @@ VENV_ACTIVATE := .venv/bin/activate
 ${VENV_ACTIVATE}: requirements.txt
 	python3.10 -m venv .venv || python3 -m venv .venv
 	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && \
-	python3 -m pip install --retries 20 --timeout 1000 -r requirements.txt
+	python3 -m pip install --retries=20 --timeout=1000 -r requirements.txt
 
 # @Adian: use Chinese (e.g., nju, utsc, tsinghua, aliyun) source when pip install
 # SRC_INDEX := https://mirrors.aliyun.com/pypi/simple
