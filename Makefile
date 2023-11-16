@@ -53,17 +53,21 @@ VENV_ACTIVATE := .venv/bin/activate
 # 	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools && python3 -m pip install -r requirements.txt
 
 # @Adian: use Chinese (e.g., nju, utsc, tsinghua, aliyun) source when pip install
+SRC_INDEX := https://mirrors.aliyun.com/pypi/simple
 # SRC_INDEX := https://pypi.tuna.tsinghua.edu.cn/simple
-# SRC_INDEX := https://mirrors.aliyun.com/pypi/simple
 # SRC_INDEX := https://mirrors.ustc.edu.cn/pypi/web/simple
 # SRC_INDEX := https://mirrors.nju.edu.cn/pypi/web/simple
 ${VENV_ACTIVATE}: requirements.txt
 	python3.10 -m venv .venv || python3 -m venv .venv
 	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools \
-	&& python3 -m pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple \
-	|| python3 -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple \
-	|| python3 -m pip install -r requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple \
-	|| python3 -m pip install -r requirements.txt -i https://mirrors.nju.edu.cn/pypi/web/simple \
+	&& python3 -m pip install -i ${SRC_INDEX} --retries 20 --timeout 1000 -r requirements.txt
+# ${VENV_ACTIVATE}: requirements.txt
+# 	python3.10 -m venv .venv || python3 -m venv .venv
+# 	source ${VENV_ACTIVATE} && python3 -m pip install --upgrade pip setuptools \
+# 	&& python3 -m pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple \
+# 	|| python3 -m pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple \
+# 	|| python3 -m pip install -r requirements.txt -i https://mirrors.ustc.edu.cn/pypi/web/simple \
+# 	|| python3 -m pip install -r requirements.txt -i https://mirrors.nju.edu.cn/pypi/web/simple
 
 install-dependencies: ${VENV_ACTIVATE}
 
