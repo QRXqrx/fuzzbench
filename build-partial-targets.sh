@@ -5,13 +5,14 @@
 # useful when some of the builds are failed.
 ####################################################
 
-if [ $# -lt 1 ]; then
-  echo "build-partial-targets: <fuzzer>"
+if [ $# -lt 2 ]; then
+  echo "build-partial-targets: <fuzzer> <nproc>"
   exit 1
 fi
 
 # Bind fuzzer
 FUZZER="$1"
+N_PROC="$2"
 
 # Benches#1
 TARGETS=(
@@ -25,6 +26,6 @@ TARGETS=(
 
 for TARGET in "${TARGETS[@]}"
 do
-  echo "make -j6 build-$FUZZER-$TARGET"
-  make -j6 "build-$FUZZER-$TARGET"
+  echo "make -j $N_PROC build-$FUZZER-$TARGET"
+  make -j "$N_PROC" "build-$FUZZER-$TARGET"
 done
