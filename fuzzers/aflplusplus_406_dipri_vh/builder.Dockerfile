@@ -34,11 +34,9 @@ RUN apt-get update && \
         gcc-$(gcc --version|head -n1|sed 's/\..*//'|sed 's/.* //')-plugin-dev \
         libstdc++-$(gcc --version|head -n1|sed 's/\..*//'|sed 's/.* //')-dev
 
-# @DiPri: TODO: change the download link.
-# Download afl++.
-RUN git clone -b dev https://github.com/AFLplusplus/AFLplusplus /afl && \
+# @DiPri: download aflpp-dipri, a extension on aflpp406
+RUN git clone https://github.com/QRXqrx/aflpp-dipri.git /afl && \
     cd /afl && \
-    git checkout 4a7e35b29c6711b68d3d579716685c3752ff62a8 || \
     true
 
 # Build without Python support as we don't need it.

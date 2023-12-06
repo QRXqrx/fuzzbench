@@ -1,4 +1,4 @@
-# aflplusplus-dipri
+# aflplusplus+DiPri
 
 AFL++ fuzzer equipped with DiPri seed prioritization. 
 AFL++-DiPri is implemented on top of AFL++-4.06c (aflplusplus_406).

@@ -259,7 +259,9 @@ def fuzz(input_corpus,
 
     flags = list(flags)
 
-    # @DiPri: TODO: add DiPri flags (CLI options) and environments.
+    # @DiPri: seems can add DiPri flags (CLI options).
+
+    # @DiPri: add afl-fuzz flags/options
 
     if os.path.exists('./afl++.dict'):
         flags += ['-x', './afl++.dict']
