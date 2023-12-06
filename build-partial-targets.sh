@@ -25,6 +25,6 @@ TARGETS=(
 
 for TARGET in "${TARGETS[@]}"
 do
-  echo "make -j$(nproc) build-$FUZZER-$TARGET"
-  make -j"$(nproc)" "build-$FUZZER-$TARGET"
+  echo "make -j6 build-$FUZZER-$TARGET"
+  make -j6 "build-$FUZZER-$TARGET"
 done
