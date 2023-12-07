@@ -15,9 +15,8 @@
 FROM gcr.io/fuzzbench/base-image
 
 # @DiPri: another batch of envs. A batch of envs are already defined at
-# afl/fuzz.py#prepare_fuzz_environment(). It seems we better to add our
-# Specialized, e.g., DiPri envs at this individual docker file. BTW,
-# these envs seem prepared for AFL++-based fuzzers.
+# afl/fuzz.py#prepare_fuzz_environment(). These envs seem prepared for
+# AFL++-based fuzzers.
 # This makes interactive docker runs painless:
 ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/out"
 #ENV AFL_MAP_SIZE=2621440
@@ -25,7 +24,8 @@ ENV PATH="$PATH:/out"
 ENV AFL_SKIP_CPUFREQ=1
 ENV AFL_I_DONT_CARE_ABOUT_MISSING_CRASHES=1
 ENV AFL_TESTCACHE_SIZE=2
-# @DiPri: add DiPri envs
+# @DiPri: It seems we better to add our specialized, e.g., DiPri envs
+# into this individual docker file.
 ENV DIPRI_MODE="V"
 ENV DIPRI_MEASURE="H"
 RUN apt install -y unzip git gdb joe
