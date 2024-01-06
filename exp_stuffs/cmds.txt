@@ -1,0 +1,32 @@
+# Official document
+PYTHONPATH=. python3 experiment/run_experiment.py \
+--experiment-config experiment-config.yaml \
+--benchmarks freetype2-2017 bloaty_fuzz_target \
+--experiment-name $EXPERIMENT_NAME \
+--fuzzers afl libfuzzer
+
+# Lookup help
+PYTHONPATH=. python3 experiment/run_experiment.py --help
+
+# Test1
+python3 experiment/run_experiment.py -a \
+--experiment-config ../configs/test.yaml \
+--benchmarks sqlite3_ossfuzz libjpeg-turbo_libjpeg_turbo_fuzzer \
+--experiment-name test1 \
+--fuzzers afl aflplusplus_406 mopt
+
+# 1*23hours*3baselines
+PYTHONPATH=. python3 experiment/run_experiment.py -a \
+--experiment-config ../configs/camp-1x82800.yaml \
+--benchmarks jsoncpp_jsoncpp_fuzzer curl_curl_fuzzer_http bloaty_fuzz_target sqlite3_ossfuzz freetype2_ftfuzzer re2_fuzzer libpcap_fuzz_both lcms_cms_transform_fuzzer \
+--experiment-name 20231115-dipri-baselines \
+--fuzzers afl aflplusplus_406 aflplusplus_406_z
+
+# 6*23hours*1fuzzer (modifiy --fuzzers)
+## 1
+PYTHONPATH=. python3 experiment/run_experiment.py -a --experiment-config ../configs/camp-6x82800.yaml --benchmarks jsoncpp_jsoncpp_fuzzer curl_curl_fuzzer_http bloaty_fuzz_target sqlite3_ossfuzz --experiment-name 20231115-dipri-baselines --fuzzers afl aflplusplus_406 aflplusplus_406_z
+## 2
+PYTHONPATH=. python3 experiment/run_experiment.py -a --experiment-config ../configs/camp-6x82800.yaml --benchmarks freetype2_ftfuzzer re2_fuzzer libpcap_fuzz_both lcms_cms_transform_fuzzer --experiment-name 20231115-dipri-baselines --fuzzers afl aflplusplus_406 aflplusplus_406_z
+
+
+ 
